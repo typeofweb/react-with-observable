@@ -1,0 +1,10 @@
+.DS_Store
+/.rpt2_cache
+/src
+/test
+/examples
+/coverage
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "outDir": "build/compiled",
+    "target": "es5",
+    "module": "esnext",
+    "jsx": "react",
+    "declaration": true,
+    "lib": ["esnext", "dom"],
+    "sourceMap": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts"
+  ]
+}
