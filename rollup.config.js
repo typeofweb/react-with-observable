@@ -7,17 +7,20 @@ import pkg from './package.json';
 export default [
   // browser-friendly UMD build
   {
-    input: 'src/index.ts',
+    input: 'src/index.tsx',
     output: {
       name: 'react-with-observable',
       file: pkg.browser,
       format: 'umd',
     },
     plugins: [
-      // resolve(), // so Rollup can find `ms`
-      // commonjs(), // so Rollup can convert `ms` to an ES module
+      resolve(),
+      commonjs({
+        include: 'node_modules/**',
+      }),
       typescript(),
     ],
+    external: ['react'],
   },
 
   // CommonJS (for Node) and ES module (for bundlers) build.
