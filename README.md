@@ -1,4 +1,5 @@
 # react-with-observable
+![](https://coveralls.io/repos/github/mmiszy/react-with-observable/badge.svg?branch=master)
 
 `react-with-observable` is a component which allows you to use Observables declaratively.
 
