@@ -16,7 +16,7 @@
   "scripts": {
     "build": "rimraf build && rollup -c",
     "test": "jest --detectLeaks",
-    "test:coverage": "jest --detectLeaks",
+    "test:coverage": "jest --detectLeaks --coverage",
     "prepublish": "npm run build"
   },
   "keywords": [],
