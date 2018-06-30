@@ -1,8 +1,8 @@
 # react-with-observable
 [![Build Status](https://travis-ci.org/mmiszy/react-with-observable.svg?branch=master)](https://travis-ci.org/mmiszy/react-with-observable)
 [![Coverage Status](https://coveralls.io/repos/github/mmiszy/react-with-observable/badge.svg?branch=master)](https://coveralls.io/github/mmiszy/react-with-observable?branch=master)
-![npm](https://img.shields.io/npm/v/react-with-observable.svg)
-![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/react-with-observable.svg)
+[![npm](https://img.shields.io/npm/v/react-with-observable.svg)](https://www.npmjs.com/package/react-with-observable)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/react-with-observable.svg)](https://www.npmjs.com/package/react-with-observable)
 
 
 `react-with-observable` is a component which allows you to use Observables declaratively.
