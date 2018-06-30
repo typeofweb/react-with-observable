@@ -4,7 +4,7 @@
 
 * ✅ Supports any Observable implementation compatible with ECMAScript Observable (eg. **RxJS**)!
 * ✅ Inspired by `AsyncPipe` from Angular!
-* ✅ Very extensible by simply composing Observable operators!
+* ✅ Very extensible simply by composing Observable operators!
 
 It handles subscribing and unsubscribing automatically, and, hence, you don't have to worry about memory leaks or updating state when new values come!
 
@@ -12,7 +12,7 @@ Inspired by the `AsyncPipe` from Angular. Uses [`create-subscription`](https://g
 
 ## Install
 ```javascript
-npm install react-with-observable
+npm install --save react-with-observable create-subscription
 ```
 
 ## Usage

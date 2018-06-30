@@ -20,7 +20,7 @@ export default [
       }),
       typescript(),
     ],
-    external: ['react'],
+    external: ['react', 'react-dom', 'create-subscription'],
   },
 
   // CommonJS (for Node) and ES module (for bundlers) build.

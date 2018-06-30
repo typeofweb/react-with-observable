@@ -1,12 +1,9 @@
 import 'symbol-observable';
 
-import * as createSubscriptionModule from 'create-subscription';
+import { createSubscription } from 'create-subscription';
 import { Subscription as SubscriptionComponent } from 'create-subscription';
 import * as React from 'react';
 export { SubscriptionComponent };
-
-// rollup quirk
-const { createSubscription } = createSubscriptionModule;
 
 export interface Observable<T> {
   subscribe(onNext: (val: T) => any, onError?: Function, onComplete?: Function): Subscription;
