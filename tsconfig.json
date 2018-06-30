@@ -14,7 +14,6 @@
     "noFallthroughCasesInSwitch": true,
 
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
     "skipLibCheck": true
   },
   "include": [

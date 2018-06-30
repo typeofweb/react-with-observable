@@ -1,77 +1,66 @@
 import 'symbol-observable';
-import createSubscriptionModule from 'create-subscription';
+
+import * as createSubscriptionModule from 'create-subscription';
 import { Subscription as SubscriptionComponent } from 'create-subscription';
-import React from 'react';
+import * as React from 'react';
 export { SubscriptionComponent };
 
+// rollup quirk
 const { createSubscription } = createSubscriptionModule;
 
-export declare class Observable<T> {
-  constructor(subscriber: SubscriberFunction<T>);
-
-  // Subscribes to the sequence with an observer
-  subscribe(observer: Observer<T>): Subscription;
-
-  // Subscribes to the sequence with callbacks
-  subscribe(onNext: Function, onError?: Function, onComplete?: Function): Subscription;
-
-  // Returns itself
-  [Symbol.observable](): Observable<T>;
-
-  // Converts items to an Observable
-  static of<U>(...items: U[]): Observable<U>;
-
-  // Converts an observable or iterable to an Observable
-  static from<U>(observable: U): Observable<U>;
+export interface Observable<T> {
+  subscribe(onNext: (val: T) => any, onError?: Function, onComplete?: Function): Subscription;
+  [Symbol.observable](): this;
 }
 
-export declare interface Subscription {
-  // Cancels the subscription
+export interface Subscription {
   unsubscribe(): void;
-
-  // A boolean value indicating whether the subscription is closed
-  closed: boolean;
 }
 
-export declare interface SubscriberFunction<T> {
-  (observer: SubscriptionObserver<T>): (() => void) | Subscription;
+export interface SubscribeProps<T> {
+  children: SubscribeChildren<T>;
 }
 
-export declare interface Observer<T> {
-  // Receives the subscription object when `subscribe` is called
-  start?(subscription: Subscription): void;
+// @todo rxjs has incorrect typings because it lacks `[Symbol.observable](): this` method
+// so I added `subscribe` here to make it compatible with rxjs
+type SubscribeChildren<T> =
+  | { subscribe: Observable<T>['subscribe'] }
+  | { [Symbol.observable](): Observable<T> };
 
-  // Receives the next value in the sequence
-  next?(value: T): void;
+export class Subscribe<T = any> extends React.Component<SubscribeProps<T>> {
+  private SubscriptionComponent = this.getSubscriptionComponent();
 
-  // Receives the sequence error
-  error?(errorValue: Error): void;
-
-  // Receives a completion notification
-  complete?(): void;
-}
-
-export declare interface SubscriptionObserver<T> {
-  // Sends the next value in the sequence
-  next(value: T): void;
-
-  // Sends the sequence error
-  error(errorValue: Error): void;
-
-  // Sends the completion notification
-  complete(): void;
-
-  // A boolean value indicating whether the subscription is closed
-  closed(): boolean;
-}
-
-export class Subscribe<T> extends React.Component<{ children: Observable<T> }> {
   render() {
-    return this.getSubscription();
+    const observable = this.getObservableFromChildren();
+
+    return (
+      <this.SubscriptionComponent source={observable}>
+        {val => {
+          if (typeof val === 'undefined') {
+            return '';
+          }
+          return val;
+        }}
+      </this.SubscriptionComponent>
+    );
   }
 
-  getSubscription() {
-    const observable = (React.Children.only(this.props.children) as any) as Observable<T>;
+  private getObservableFromChildren() {
+    const child = this.props.children as Observable<T>;
+
+    const observable: Observable<T> | undefined =
+      typeof child[Symbol.observable] === 'function' ? child[Symbol.observable]() : undefined;
+
+    if (!observable) {
+      throw new Error(
+        `<Subscribe>: Expected children to be a single Observable instance with a [Symbol.observable] method. See more: https://github.com/tc39/proposal-observable`
+      );
+    }
+
+    return observable;
+  }
+
+  private getSubscriptionComponent() {
     const SubscriptionComponent = createSubscription<Observable<T>, T | undefined>({
       getCurrentValue(_observable) {
         return undefined;
@@ -82,6 +71,6 @@ export class Subscribe<T> extends React.Component<{ children: Observable<T> }> {
       },
     });
 
-    return <SubscriptionComponent source={observable}>{val => val}</SubscriptionComponent>;
+    return SubscriptionComponent;
   }
 }
