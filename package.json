@@ -15,7 +15,9 @@
   "homepage": "https://github.com/mmiszy/react-with-observable#readme",
   "scripts": {
     "build": "rimraf build && rollup -c",
-    "test": "jest --detectLeaks",
+    "test": "npm-run-all -p test:jest test:types",
+    "test:jest": "jest --detectLeaks",
+    "test:types": "tslint -c ./tslint.json --project ./tsconfig.json",
     "test:coverage": "jest --detectLeaks --coverage",
     "test:coveralls": "npm run test:coverage && cat coverage/lcov.info | coveralls ",
     "prepublish": "npm run build"
@@ -45,9 +47,11 @@
     "rxjs": "6.2.1",
     "source-map-support": "0.5.6",
     "symbol-observable": "1.2.0",
-    "ts-jest": "22.4.6",
+    "ts-jest": "23.0.0",
     "ts-node": "7.0.0",
+    "tslint": "5.10.0",
     "typescript": "2.9.2",
+    "typestrict": "0.0.9",
     "weak": "1.0.1"
   },
   "peerDependencies": {
