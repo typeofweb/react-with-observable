@@ -10,6 +10,7 @@
 * ✅ Supports any Observable implementation compatible with ECMAScript Observable (eg. **RxJS**)!
 * ✅ Inspired by the `AsyncPipe` from Angular!
 * ✅ Very extensible by composing Observable operators!
+* ✅ TypeScript definitions included!
 
 It handles subscribing and unsubscribing automatically and, hence, you don't have to worry about memory leaks or updating state when new values come!
 
@@ -81,7 +82,7 @@ import { Link } from 'react-router-dom';
 import { map, startWith } from 'rxjs/operators';
 import { Subscribe } from 'react-with-observable';
 
-// myContacts$ is contains a reactive list of contacts
+// myContacts$ is an Observable of an array of contacts
 
 export class ContactsList extends React.Component {
   render() {
