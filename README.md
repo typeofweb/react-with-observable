@@ -5,15 +5,15 @@
 [![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/react-with-observable.svg)](https://www.npmjs.com/package/react-with-observable)
 
 
-`react-with-observable` is a component which allows you to use Observables declaratively.
+`react-with-observable`: use Observables declaratively in ️️React!
 
 * ✅ Supports any Observable implementation compatible with ECMAScript Observable (eg. **RxJS**)!
-* ✅ Inspired by `AsyncPipe` from Angular!
-* ✅ Very extensible simply by composing Observable operators!
+* ✅ Inspired by the `AsyncPipe` from Angular!
+* ✅ Very extensible by composing Observable operators!
 
-It handles subscribing and unsubscribing automatically, and, hence, you don't have to worry about memory leaks or updating state when new values come!
+It handles subscribing and unsubscribing automatically and, hence, you don't have to worry about memory leaks or updating state when new values come!
 
-Inspired by the `AsyncPipe` from Angular. Uses [`create-subscription`](https://github.com/facebook/react/tree/master/packages/create-subscription) under the hood.
+Inspired by the `AsyncPipe` from Angular. Uses React's [`create-subscription`](https://github.com/facebook/react/tree/master/packages/create-subscription) under the hood.
 
 ## Install
 ```javascript
@@ -24,13 +24,14 @@ npm install --save react-with-observable create-subscription
 The component supports any Observable library compatible with the [Observables for ECMAScript draft proposal](https://github.com/tc39/proposal-observable).
 
 ### Basics
-This package exports a single named component `Subscribe`. It expects you to provide a an Observable as its only child:
+This package exports a single named component `Subscribe`. It expects you to provide an Observable as its only child:
 
 ```javascript
 const source$ = Observable.of('Hello, world!');
 // …
 <Subscribe>{source$}</Subscribe>
 ```
+
 This results in "Hello, world!" being displayed.
 
 ### Reactivity
@@ -46,7 +47,7 @@ As a result, next integer is displayed every second.
 
 
 ### Operators
-You can transform the Observable as you wish, as long as the final result is also an Observable.
+You can transform the Observable as you wish, as long as the final result is also an Observable:
 
 ```javascript
 const source$ = Observable.interval(1000);
@@ -59,10 +60,11 @@ const source$ = Observable.interval(1000);
   )}
 </Subscribe>
 ```
-As a result, an `<input>` element is rendered. It's value is changed every second to 0, 10, 30, 60, 100 and so on.
+
+As a result, an `<input>` element is rendered. Its value is changed every second to 0, 10, 30, 60, 100… and so on.
 
 ### Initial value
-Use your Observable library! The library doesn't provide any custom way to provide the default value and it doesn't need to. For example, with rxjs, you can use the `startWith` operator:
+Use your Observable library! `react-with-observable` doesn't implement any custom way to provide the default value and it doesn't need to. For example, with RxJS, you can use the `startWith` operator:
 
 ```javascript
 <Subscribe>
@@ -119,3 +121,7 @@ export class ContactsList extends React.Component {
   };
 }
 ```
+
+## Bugs? Feature requests?
+Feel free to create a new issue: [issues](https://github.com/mmiszy/react-with-observable/issues). Pull requests are also welcome!
+
