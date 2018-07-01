@@ -24,7 +24,7 @@ type SubscribeChildren<T> =
   | { subscribe: Observable<T>['subscribe'] }
   | { [Symbol.observable](): Observable<T> };
 
-export class Subscribe<T = any> extends React.Component<SubscribeProps<T>> {
+export class Subscribe<T extends React.ReactNode> extends React.PureComponent<SubscribeProps<T>> {
   private SubscriptionComponent = this.getSubscriptionComponent();
 
   render() {
