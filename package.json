@@ -20,11 +20,13 @@
     "test:types": "tslint -c ./tslint.json --project ./tsconfig.json",
     "test:coverage": "jest --detectLeaks --coverage",
     "test:coveralls": "npm run test:coverage && cat coverage/lcov.info | coveralls ",
-    "prepublish": "npm run build && npm run deploy:examples",
     "build:examples": "webpack --config examples/webpack.config.js",
     "start:examples": "webpack-dev-server --config examples/webpack.config.js",
     "deploy:examples": "npm run build:examples && gh-pages --dist examples",
-    "prettier": "prettier --config .prettierrc --write '**/*.{ts,js,tsx,jsx}'"
+    "prettier": "prettier --config .prettierrc --write '**/*.{ts,js,tsx,jsx}'",
+    "release": "np --no-yarn",
+    "prepublish": "npm run build",
+    "postdeploy": "npm run deploy:examples"
   },
   "keywords": [],
   "author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
@@ -40,7 +42,7 @@
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "gh-pages": "1.2.0",
-    "husky": "0.14.3",
+    "husky": "1.0.0-rc.9",
     "jest": "23.2.0",
     "npm-run-all": "4.1.3",
     "prettier": "1.13.7",
@@ -73,7 +75,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "npm test"
     }
   }
 }
