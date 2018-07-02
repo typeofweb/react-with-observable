@@ -3,6 +3,7 @@
 /node_modules
 /coverage
 /build
+/examples/bundle*
 
 npm-debug.log*
 yarn-debug.log*
