@@ -76,6 +76,8 @@ Use your Observable library! `react-with-observable` doesn't implement any custo
 ```
 
 ## Example
+You can find more interactive examples here: https://mmiszy.github.io/react-with-observable/
+
 ```javascript
 import * as React from 'react';
 import { Link } from 'react-router-dom';
