@@ -2,8 +2,10 @@
   "name": "react-with-observable",
   "version": "1.2.1",
   "description": "",
-  "main": "build/index.js",
+  "main": "build/index.common.js",
   "browser": "build/index.js",
+  "unpkg": "build/index.js",
+  "module": "build/index.esm.js",
   "types": "build/index.d.ts",
   "repository": {
     "type": "git",

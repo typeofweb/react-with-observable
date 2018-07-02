@@ -4,4 +4,6 @@ node_js:
 branches:
   only: 
     - master
-after_success: npm run test:coveralls
+script:
+  - npm test
+after_success: '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run test:coveralls'
