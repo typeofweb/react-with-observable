@@ -1,5 +1,5 @@
 import { Subscribe } from './index';
-import { of, interval, BehaviorSubject } from 'rxjs';
+import { of, interval, BehaviorSubject, Observable } from 'rxjs';
 import { map, scan } from 'rxjs/operators';
 import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
@@ -9,6 +9,8 @@ describe('test', () => {
     const source$ = of(1);
     const el = mount(<Subscribe>{source$}</Subscribe>);
     expect(el.text()).toEqual('1');
+
+    el.unmount();
   });
 
   it('should render next values', () => {
@@ -99,6 +101,39 @@ describe('test', () => {
     el.unmount();
   });
 
+  it('should work with BehaviourSubject', () => {
+    const source$ = new BehaviorSubject(123);
+    const el = mount(<Subscribe>{source$}</Subscribe>);
+    expect(el.text()).toEqual('123');
+
+    el.unmount();
+  });
+
+  it('should return empty render for an observable of undefined', () => {
+    const source$ = of(undefined);
+    const el = mount(<Subscribe>{source$}</Subscribe>);
+    expect(el.childAt(0).isEmptyRender()).toBe(true);
+
+    el.unmount();
+  });
+
+  it('should return empty render for an observable of null', () => {
+    const source$ = of(null);
+    const el = mount(<Subscribe>{source$}</Subscribe>);
+    expect(el.childAt(0).isEmptyRender()).toBe(true);
+
+    el.unmount();
+  });
+
+  it('should return empty render for an observable without a value', () => {
+    const source$ = new Observable();
+
+    const el = mount(<Subscribe>{source$}</Subscribe>);
+    expect(el.childAt(0).isEmptyRender()).toBe(true);
+
+    el.unmount();
+  });
+
   it('should throw an error when no obserable is passed', () => {
     const source$ = {} as any;
 
@@ -111,11 +146,5 @@ describe('test', () => {
     expect(test).toThrow();
 
     el && el.unmount();
-  });
-
-  it('should work with BehaviourSubject', () => {
-    const source$ = new BehaviorSubject(123);
-    const el = mount(<Subscribe>{source$}</Subscribe>);
-    expect(el.text()).toEqual('123');
   });
 });
