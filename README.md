@@ -7,7 +7,7 @@
 
 `react-with-observable`: use Observables declaratively in ️️React!
 
-* ✅ Supports any Observable implementation compatible with ECMAScript Observable (eg. **RxJS**)!
+* ✅ Supports any Observable implementation compatible with ECMAScript Observable (e.g. **RxJS**)!
 * ✅ Inspired by the `AsyncPipe` from Angular!
 * ✅ Very extensible by composing Observable operators!
 * ✅ TypeScript definitions included!
@@ -44,7 +44,7 @@ const source$ = Observable.interval(1000);
 <Subscribe>{source$}</Subscribe>
 ```
 
-As a result, next integer is displayed every second.
+As a result, the next integer is displayed every second.
 
 
 ### Operators
@@ -62,7 +62,7 @@ const source$ = Observable.interval(1000);
 </Subscribe>
 ```
 
-As a result, an `<input>` element is rendered. Its value is changed every second to 0, 10, 30, 60, 100… and so on.
+As the result, an `<input>` element is rendered. Its value is changed every second to 0, 10, 30, 60, 100,  and so on.
 
 ### Initial value
 Use your Observable library! `react-with-observable` doesn't implement any custom way to provide the default value and it doesn't need to. For example, with RxJS, you can use the `startWith` operator:
@@ -127,4 +127,3 @@ export class ContactsList extends React.Component {
 
 ## Bugs? Feature requests?
 Feel free to create a new issue: [issues](https://github.com/mmiszy/react-with-observable/issues). Pull requests are also welcome!
-
