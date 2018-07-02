@@ -1,22 +1,22 @@
 import { Subscribe } from './index';
-import { of, interval } from 'rxjs';
+import { of, interval, BehaviorSubject } from 'rxjs';
 import { map, scan } from 'rxjs/operators';
 import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 
 describe('test', () => {
   it('should render the value', () => {
-    const source = of(1);
-    const el = mount(<Subscribe>{source}</Subscribe>);
+    const source$ = of(1);
+    const el = mount(<Subscribe>{source$}</Subscribe>);
     expect(el.text()).toEqual('1');
   });
 
   it('should render next values', () => {
     jest.useFakeTimers();
 
-    const source = interval(100);
+    const source$ = interval(100);
 
-    const el = mount(<Subscribe>{source}</Subscribe>);
+    const el = mount(<Subscribe>{source$}</Subscribe>);
     for (let i = 0; i < 10; ++i) {
       jest.advanceTimersByTime(100);
       expect(el.text()).toEqual(String(i));
@@ -28,11 +28,11 @@ describe('test', () => {
   it('works fine with operators', () => {
     jest.useFakeTimers();
 
-    const source = interval(100);
+    const source$ = interval(100);
 
     const el = mount(
       <Subscribe>
-        {source.pipe(
+        {source$.pipe(
           map(val => 10 * val),
           scan((acc, val) => acc + val, 0)
         )}
@@ -56,11 +56,11 @@ describe('test', () => {
   it('allows rendering elements', () => {
     jest.useFakeTimers();
 
-    const source = interval(100);
+    const source$ = interval(100);
 
     const el = mount(
       <Subscribe>
-        {source.pipe(
+        {source$.pipe(
           map(val => 10 * val),
           scan((acc, val) => acc + val, 0),
           map(val => <input value={val} />)
@@ -100,16 +100,22 @@ describe('test', () => {
   });
 
   it('should throw an error when no obserable is passed', () => {
-    const source = {} as any;
+    const source$ = {} as any;
 
     // stfu React
     jest.spyOn(console, 'error').mockImplementation(() => undefined);
     let el: ReactWrapper | undefined;
     const test = () => {
-      el = mount(<Subscribe>{source}</Subscribe>);
+      el = mount(<Subscribe>{source$}</Subscribe>);
     };
     expect(test).toThrow();
 
     el && el.unmount();
+  });
+
+  it('should work with BehaviourSubject', () => {
+    const source$ = new BehaviorSubject(123);
+    const el = mount(<Subscribe>{source$}</Subscribe>);
+    expect(el.text()).toEqual('123');
   });
 });
