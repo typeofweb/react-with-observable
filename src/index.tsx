@@ -34,7 +34,7 @@ export class Subscribe<T extends React.ReactNode> extends React.PureComponent<Su
       <this.SubscriptionComponent source={observable}>
         {val => {
           if (typeof val === 'undefined') {
-            return '';
+            return null;
           }
           return val;
         }}
