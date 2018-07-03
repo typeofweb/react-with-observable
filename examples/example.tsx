@@ -33,6 +33,7 @@ import 'symbol-observable';
 import { of, interval, BehaviorSubject } from 'rxjs';
 import { map, startWith, scan } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
+import { Subscribe } from 'react-with-observable';
 `.trim()}
           </code>
         </pre>
