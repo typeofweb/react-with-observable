@@ -232,7 +232,7 @@ var MyComponent = function () {
                 react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", null, "Symbol.observable"),
                 " polyfill before you start:"),
             react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("pre", { className: "language-jsx" },
-                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", { className: "language-jsx" }, "\nimport 'symbol-observable';\nimport { of, interval, BehaviorSubject } from 'rxjs';\nimport { map, startWith, scan } from 'rxjs/operators';\nimport { ajax } from 'rxjs/ajax';\n".trim())),
+                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", { className: "language-jsx" }, "\nimport 'symbol-observable';\nimport { of, interval, BehaviorSubject } from 'rxjs';\nimport { map, startWith, scan } from 'rxjs/operators';\nimport { ajax } from 'rxjs/ajax';\nimport { Subscribe } from 'react-with-observable';\n".trim())),
             react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("h2", null, "First example"),
             react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("pre", { className: "language-jsx" },
                 react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", { className: "language-jsx" }, "\nconst source1$ = of('Hello, world!');\n<Subscribe>{source1$}</Subscribe>\n".trim())),
