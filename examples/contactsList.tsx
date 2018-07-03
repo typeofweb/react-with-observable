@@ -32,8 +32,8 @@ class ContactsList extends React.Component {
       <div>
         <h3>My Contacts</h3>
         <h4>Recently fetched contacts</h4>
-        <pre>
-          <code>
+        <pre className="language-jsx">
+          <code className="language-jsx">
             {`
 recentContacts$ = myContacts$.pipe(startWith(null as Contact[] | null));
 <Subscribe>{recentContacts$.pipe(map(this.renderList))}</Subscribe>
@@ -43,8 +43,8 @@ recentContacts$ = myContacts$.pipe(startWith(null as Contact[] | null));
         <Subscribe>{this.recentContacts$.pipe(map(this.renderList))}</Subscribe>
 
         <h4>All contacts</h4>
-        <pre>
-          <code>
+        <pre className="language-jsx">
+          <code className="language-jsx">
             {`
 allContacts$ = myContacts$.pipe(
   scan((acc, contacts) => {
