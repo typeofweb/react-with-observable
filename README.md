@@ -21,6 +21,14 @@ Inspired by the `AsyncPipe` from Angular. Uses React's [`create-subscription`](h
 npm install --save react-with-observable create-subscription
 ```
 
+Get a polyfill for `Symbol.observable` if you need one (you most likely do).
+
+```javascript
+npm install --save symbol-observable
+```
+
+Remember to `import 'symbol-observable'` **before** `rxjs` or `react-with-observable`!
+
 ## Usage
 The component supports any Observable library compatible with the [Observables for ECMAScript draft proposal](https://github.com/tc39/proposal-observable).
 
@@ -79,6 +87,7 @@ Use your Observable library! `react-with-observable` doesn't implement any custo
 You can find more interactive examples here: https://mmiszy.github.io/react-with-observable/
 
 ```javascript
+import 'symbol-observable';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { map, startWith } from 'rxjs/operators';

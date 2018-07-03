@@ -1,5 +1,3 @@
-import 'symbol-observable';
-
 import { createSubscription } from 'create-subscription';
 import { Subscription as SubscriptionComponent } from 'create-subscription';
 import * as React from 'react';
