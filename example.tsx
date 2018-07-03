@@ -1,3 +1,4 @@
+import 'symbol-observable';
 import * as React from 'react';
 import { of, interval } from 'rxjs';
 
@@ -12,11 +13,32 @@ const source3$ = interval(1000);
 
 export const MyComponent: React.SFC = () => {
   return (
-    <div>
+    <div className="examples-container">
+      <h1>
+        <code>react-with-observable</code> — examples
+      </h1>
+      <p className="subtitle">Use Observables with React declaratively!</p>
+
       <section>
+        <h2>Before you start</h2>
+        <p>
+          The following examples are created with RxJS. Make sure to include the{' '}
+          <code>Symbol.observable</code> polyfill before you start:
+        </p>
+
+        <pre className="language-jsx">
+          <code className="language-jsx">
+            {`
+import 'symbol-observable';
+import { of, interval, BehaviorSubject } from 'rxjs';
+import { map, startWith, scan } from 'rxjs/operators';
+import { ajax } from 'rxjs/ajax';
+`.trim()}
+          </code>
+        </pre>
         <h2>First example</h2>
-        <pre>
-          <code>
+        <pre className="language-jsx">
+          <code className="language-jsx">
             {`
 const source1$ = of('Hello, world!');
 <Subscribe>{source1$}</Subscribe>
@@ -28,8 +50,8 @@ const source1$ = of('Hello, world!');
 
       <section>
         <h2>Timer example</h2>
-        <pre>
-          <code>
+        <pre className="language-jsx">
+          <code className="language-jsx">
             {`
 const source2$ = interval(1000);
 <Subscribe>{source2$}</Subscribe>
@@ -41,8 +63,8 @@ const source2$ = interval(1000);
 
       <section>
         <h2>Operators example</h2>
-        <pre>
-          <code>
+        <pre className="language-jsx">
+          <code className="language-jsx">
             {`
 const source3$ = interval(1000);
 <Subscribe>

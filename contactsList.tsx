@@ -32,8 +32,29 @@ class ContactsList extends React.Component {
       <div>
         <h3>My Contacts</h3>
         <h4>Recently fetched contacts</h4>
+        <pre className="language-jsx">
+          <code className="language-jsx">
+            {`
+recentContacts$ = myContacts$.pipe(startWith(null as Contact[] | null));
+<Subscribe>{recentContacts$.pipe(map(this.renderList))}</Subscribe>
+`.trim()}
+          </code>
+        </pre>
         <Subscribe>{this.recentContacts$.pipe(map(this.renderList))}</Subscribe>
+
         <h4>All contacts</h4>
+        <pre className="language-jsx">
+          <code className="language-jsx">
+            {`
+allContacts$ = myContacts$.pipe(
+  scan((acc, contacts) => {
+    return [...(acc || []), ...(contacts || [])];
+  })
+);
+<Subscribe>{allContacts$.pipe(map(this.renderList))}</Subscribe>
+`.trim()}
+          </code>
+        </pre>
         <Subscribe>{this.allContacts$.pipe(map(this.renderList))}</Subscribe>
       </div>
     );

@@ -149,8 +149,12 @@ var ContactsList = /** @class */ (function (_super) {
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "My Contacts"),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h4", null, "Recently fetched contacts"),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("pre", { className: "language-jsx" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("code", { className: "language-jsx" }, "\nrecentContacts$ = myContacts$.pipe(startWith(null as Contact[] | null));\n<Subscribe>{recentContacts$.pipe(map(this.renderList))}</Subscribe>\n".trim())),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_with_observable__WEBPACK_IMPORTED_MODULE_4__["Subscribe"], null, this.recentContacts$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(this.renderList))),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h4", null, "All contacts"),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("pre", { className: "language-jsx" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("code", { className: "language-jsx" }, "\nallContacts$ = myContacts$.pipe(\n  scan((acc, contacts) => {\n    return [...(acc || []), ...(contacts || [])];\n  })\n);\n<Subscribe>{allContacts$.pipe(map(this.renderList))}</Subscribe>\n".trim())),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_with_observable__WEBPACK_IMPORTED_MODULE_4__["Subscribe"], null, this.allContacts$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(this.renderList)))));
     };
     return ContactsList;
@@ -197,41 +201,55 @@ var ContactsExample = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyComponent", function() { return MyComponent; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var react_with_observable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-with-observable */ "./src/index.tsx");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _contactsList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./contactsList */ "./examples/contactsList.tsx");
+/* harmony import */ var symbol_observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! symbol-observable */ "./node_modules/symbol-observable/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var react_with_observable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-with-observable */ "./src/index.tsx");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _contactsList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./contactsList */ "./examples/contactsList.tsx");
+
 
 
 // @ts-ignore
 
 
 
-var source1$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])('Hello, world!');
-var source2$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(1000);
-var source3$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(1000);
+var source1$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])('Hello, world!');
+var source2$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(1000);
+var source3$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(1000);
 var MyComponent = function () {
-    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "First example"),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("pre", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("code", null, "\nconst source1$ = of('Hello, world!');\n<Subscribe>{source1$}</Subscribe>\n".trim())),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_with_observable__WEBPACK_IMPORTED_MODULE_2__["Subscribe"], null, source1$)),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Timer example"),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("pre", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("code", null, "\nconst source2$ = interval(1000);\n<Subscribe>{source2$}</Subscribe>\n".trim())),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_with_observable__WEBPACK_IMPORTED_MODULE_2__["Subscribe"], null, source2$)),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Operators example"),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("pre", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("code", null, "\nconst source3$ = interval(1000);\n<Subscribe>\n  {source3$.pipe(\n    map(val => 10 * val),\n    scan((acc, val) => acc + val, 0),\n    map(val => <input value={val} />)\n  )}\n</Subscribe>\n".trim())),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_with_observable__WEBPACK_IMPORTED_MODULE_2__["Subscribe"], null, source3$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (val) { return 10 * val; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["scan"])(function (acc, val) { return acc + val; }, 0), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (val) { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { value: val }); })))),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Contacts list example"),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_contactsList__WEBPACK_IMPORTED_MODULE_4__["ContactsExample"], null))));
+    return (react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", { className: "examples-container" },
+        react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("h1", null,
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", null, "react-with-observable"),
+            " \u2014 examples"),
+        react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("p", { className: "subtitle" }, "Use Observables with React declaratively!"),
+        react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("section", null,
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("h2", null, "Before you start"),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("p", null,
+                "The following examples are created with RxJS. Make sure to include the",
+                ' ',
+                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", null, "Symbol.observable"),
+                " polyfill before you start:"),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("pre", { className: "language-jsx" },
+                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", { className: "language-jsx" }, "\nimport 'symbol-observable';\nimport { of, interval, BehaviorSubject } from 'rxjs';\nimport { map, startWith, scan } from 'rxjs/operators';\nimport { ajax } from 'rxjs/ajax';\n".trim())),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("h2", null, "First example"),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("pre", { className: "language-jsx" },
+                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", { className: "language-jsx" }, "\nconst source1$ = of('Hello, world!');\n<Subscribe>{source1$}</Subscribe>\n".trim())),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_with_observable__WEBPACK_IMPORTED_MODULE_3__["Subscribe"], null, source1$)),
+        react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("section", null,
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("h2", null, "Timer example"),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("pre", { className: "language-jsx" },
+                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", { className: "language-jsx" }, "\nconst source2$ = interval(1000);\n<Subscribe>{source2$}</Subscribe>\n".trim())),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_with_observable__WEBPACK_IMPORTED_MODULE_3__["Subscribe"], null, source2$)),
+        react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("section", null,
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("h2", null, "Operators example"),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("pre", { className: "language-jsx" },
+                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("code", { className: "language-jsx" }, "\nconst source3$ = interval(1000);\n<Subscribe>\n  {source3$.pipe(\n    map(val => 10 * val),\n    scan((acc, val) => acc + val, 0),\n    map(val => <input value={val} />)\n  )}\n</Subscribe>\n".trim())),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_with_observable__WEBPACK_IMPORTED_MODULE_3__["Subscribe"], null, source3$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (val) { return 10 * val; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["scan"])(function (acc, val) { return acc + val; }, 0), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (val) { return react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("input", { value: val }); })))),
+        react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("section", null,
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("h2", null, "Contacts list example"),
+            react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_contactsList__WEBPACK_IMPORTED_MODULE_5__["ContactsExample"], null))));
 };
 
 
@@ -33501,11 +33519,10 @@ module.exports = function(originalModule) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Subscribe", function() { return Subscribe; });
-/* harmony import */ var symbol_observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! symbol-observable */ "./node_modules/symbol-observable/es/index.js");
-/* harmony import */ var create_subscription__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! create-subscription */ "./node_modules/create-subscription/index.js");
-/* harmony import */ var create_subscription__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(create_subscription__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var create_subscription__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! create-subscription */ "./node_modules/create-subscription/index.js");
+/* harmony import */ var create_subscription__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(create_subscription__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -33518,7 +33535,6 @@ var __extends = (undefined && undefined.__extends) || (function () {
 })();
 
 
-
 var Subscribe = /** @class */ (function (_super) {
     __extends(Subscribe, _super);
     function Subscribe() {
@@ -33528,9 +33544,9 @@ var Subscribe = /** @class */ (function (_super) {
     }
     Subscribe.prototype.render = function () {
         var observable = this.getObservableFromChildren();
-        return (react__WEBPACK_IMPORTED_MODULE_2__["createElement"](this.SubscriptionComponent, { source: observable }, function (val) {
+        return (react__WEBPACK_IMPORTED_MODULE_1__["createElement"](this.SubscriptionComponent, { source: observable }, function (val) {
             if (typeof val === 'undefined') {
-                return '';
+                return null;
             }
             return val;
         }));
@@ -33544,7 +33560,7 @@ var Subscribe = /** @class */ (function (_super) {
         return observable;
     };
     Subscribe.prototype.getSubscriptionComponent = function () {
-        var SubscriptionComponent = Object(create_subscription__WEBPACK_IMPORTED_MODULE_1__["createSubscription"])({
+        var SubscriptionComponent = Object(create_subscription__WEBPACK_IMPORTED_MODULE_0__["createSubscription"])({
             getCurrentValue: function (_observable) {
                 return undefined;
             },
@@ -33556,7 +33572,7 @@ var Subscribe = /** @class */ (function (_super) {
         return SubscriptionComponent;
     };
     return Subscribe;
-}(react__WEBPACK_IMPORTED_MODULE_2__["PureComponent"]));
+}(react__WEBPACK_IMPORTED_MODULE_1__["PureComponent"]));
 
 
 
