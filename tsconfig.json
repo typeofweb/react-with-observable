@@ -17,7 +17,9 @@
     "skipLibCheck": true
   },
   "include": [
-    "src"
+    "src",
+    "node_modules/cypress",
+    "cypress/*/*.ts"
   ],
   "exclude": [
     "src/**/*.spec.tsx"

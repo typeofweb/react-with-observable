@@ -18,6 +18,8 @@
   "scripts": {
     "build": "rimraf build && rollup -c",
     "test": "npm-run-all -p test:jest test:types",
+    "test:cypress": "cypress run --record",
+    "test:e2e": "npm-run-all -p --race start:examples test:cypress",
     "test:jest": "jest --detectLeaks",
     "test:types": "tslint -c ./tslint.json --project ./tsconfig.json",
     "test:coverage": "jest --detectLeaks --coverage",
@@ -34,6 +36,7 @@
   "author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
   "license": "ISC",
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "2.0.1",
     "@types/create-subscription": "16.4.0",
     "@types/enzyme": "3.1.11",
     "@types/enzyme-adapter-react-16": "1.0.2",
@@ -41,6 +44,7 @@
     "@types/react-dom": "16.0.6",
     "coveralls": "3.0.2",
     "create-subscription": "16.4.1",
+    "cypress": "3.0.2",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "gh-pages": "1.2.0",
