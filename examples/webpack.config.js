@@ -6,7 +6,7 @@ module.exports = {
   entry: ['./examples/index.tsx'],
   output: {
     path: path.resolve(__dirname),
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   devServer: {
     contentBase: path.resolve(__dirname),
