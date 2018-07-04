@@ -40,7 +40,9 @@ recentContacts$ = myContacts$.pipe(startWith(null as Contact[] | null));
 `.trim()}
           </code>
         </pre>
-        <Subscribe>{this.recentContacts$.pipe(map(this.renderList))}</Subscribe>
+        <div className="current-contacts">
+          <Subscribe>{this.recentContacts$.pipe(map(this.renderList))}</Subscribe>
+        </div>
 
         <h4>All contacts</h4>
         <pre className="language-jsx">
@@ -55,18 +57,20 @@ allContacts$ = myContacts$.pipe(
 `.trim()}
           </code>
         </pre>
-        <Subscribe>{this.allContacts$.pipe(map(this.renderList))}</Subscribe>
+        <div className="all-contacts">
+          <Subscribe>{this.allContacts$.pipe(map(this.renderList))}</Subscribe>
+        </div>
       </div>
     );
   }
 
   renderList = (contacts: Contact[] | null) => {
     if (!contacts) {
-      return 'Loading…';
+      return <span className="loading">Loading…</span>;
     }
 
     if (!contacts.length) {
-      return 'No contacts.';
+      return <span className="no-contacts">No contacts.</span>;
     }
 
     return (

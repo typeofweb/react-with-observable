@@ -50,15 +50,64 @@
       list-style-type: none;
     }
 
-    li:before {
-      content: "👉";
+    li::before {
+      content: "👉 ";
     }
   </style>
 </head>
 
 <body>
-  <div id="root"></div>
-  <script src="bundle.js"></script>
+  <div class="examples-container">
+    <h1>
+      <code>react-with-observable</code> — examples
+    </h1>
+    <p class="subtitle">Use Observables with React declaratively!</p>
+
+    <section>
+      <h2>Before you start</h2>
+      <p>
+        The following examples are created with RxJS. Make sure to include the
+        <code>Symbol.observable</code> polyfill before you start:
+      </p>
+
+      <pre class="language-jsx"><code class="language-jsx">import 'symbol-observable';
+import { of, interval, BehaviorSubject } from 'rxjs';
+import { map, startWith, scan } from 'rxjs/operators';
+import { ajax } from 'rxjs/ajax';
+import { Subscribe } from 'react-with-observable';</code></pre>
+      <h2>First example</h2>
+      <pre class="language-jsx"><code class="language-jsx">const source1$ = of('Hello, world!');
+&lt;Subscribe>{source1$}&lt;/Subscribe></code></pre>
+      <div id="example-1"></div>
+    </section>
+
+    <section>
+      <h2>Timer example</h2>
+      <pre class="language-jsx"><code class="language-jsx">const source2$ = interval(1000);
+&lt;Subscribe>{source2$}&lt;/Subscribe></code></pre>
+      <div id="example-2"></div>
+    </section>
+
+    <section>
+      <h2>Operators example</h2>
+      <pre class="language-jsx"><code class="language-jsx">const source3$ = interval(1000);
+&lt;Subscribe>
+  {source3$.pipe(
+    map(val => 10 * val),
+    scan((acc, val) => acc + val, 0),
+    map(val => <input value={val} />)
+  )}
+&lt;/Subscribe></code></pre>
+      <div id="example-3"></div>
+    </section>
+
+    <section>
+      <h2>Contacts list example</h2>
+      <div id="example-contacts"></div>
+    </section>
+  </div>
+
+  <script src="main.js"></script>
 
   <a href="https://github.com/mmiszy/react-with-observable" class="github-corner" aria-label="View source on Github">
     <svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
