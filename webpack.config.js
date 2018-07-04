@@ -1,4 +1,7 @@
 const path = require('path');
+const webpack = require('webpack');
+const GitRevisionPlugin = require('git-revision-webpack-plugin');
+const gitRevisionPlugin = new GitRevisionPlugin();
 
 module.exports = {
   mode: 'development',
@@ -26,7 +29,11 @@ module.exports = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      'VERSION': JSON.stringify(gitRevisionPlugin.version()),
+    })
+  ],
   resolve: {
     alias: {
       'react-with-observable': path.join(__dirname, '..', 'src'),
