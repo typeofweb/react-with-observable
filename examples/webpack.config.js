@@ -6,15 +6,16 @@ module.exports = {
   entry: ['./examples/index.tsx'],
   output: {
     path: path.resolve(__dirname),
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   devServer: {
     contentBase: path.resolve(__dirname),
+    port: 8082
   },
   module: {
     rules: [
       {
-        test: /\.tsx$/,
+        test: /\.tsx?$/,
         exclude: /(node_modules)/,
         use: [
           {

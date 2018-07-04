@@ -1,6 +1,18 @@
 language: node_js
 node_js:
-  - "8"
+- '10'
+cache:
+  directories:
+  - "~/.npm"
+  - "~/.cache"
+install:
+- npm ci
 script:
-  - npm test
-after_success: 'npm run test:coveralls'
+- npm test
+- npm run test:e2e
+- ./node_modules/.bin/danger ci
+after_success: npm run test:coveralls
+env:
+  matrix:
+    # CYPRESS_RECORD_KEY
+    secure: smwk4eAp5BRa5YqfPgHpW4ED3juyu3KlLtnxJ7a+I1p8Z0GMtT9bxmMrnm5OiW4YZqwSxQ+uVKgoPUBWWmoqTFOqk0pIVWM8nM66usW53MBTuaSCb5L5LmqdTELZYPPWmHLarnssoWkafVDZrqHWp1tjEvWe91iK7ey35Fns/xvdrYAcEs780uzv1ta0mjTuyLNm3+h/juvOyqm8xJss3reFYPKg/s/QBAwygF6lmXK7BxgW9SetF+4kZVez6+LuLsyP1yMcGBqle6kz5uCxRrBhqpc3xfUDcoxR9OPNw/iS84/+a3d9p/IG8KG/VJLIXXoY9hh0BZcmsj4Ie4yy0DITwGlfKR8cn/inewil6ZJzFOsSRWvSjKohagTxkayZlA0WxnFxLLwT6uZrICpEoQnCSR9XyaJR2dPuyKxLtLdtyNwFxhfCgcZtCQncQpdC1/O6tXHPOJpQuw2uqq3LPB5GGVsPzkoRb0xOOEXKuGsbqe45uSwB2hMOgaw1IWqBdSQ3fXnEpdj5uMFqhLtVeGppthJusZYFpTBFmowMxv1mTGGGEkzjzQtC4DY4IBVfQQSK+0FzznMHzXdQMbxUeb9jL5S0oKhyywaGV869QaF+0cTpwJMNEr1gmNJd+c1f6uPb70xTtt+5oObH4AcrLIjE7DJt5CVZLI37Fv1qDv8=

@@ -50,15 +50,13 @@
       list-style-type: none;
     }
 
-    li:before {
-      content: "👉";
+    li::before {
+      content: "👉 ";
     }
   </style>
 </head>
 
 <body>
-  <!-- <div id="root"></div> -->
-
   <div class="examples-container">
     <h1>
       <code>react-with-observable</code> — examples
@@ -109,7 +107,7 @@ import { Subscribe } from 'react-with-observable';</code></pre>
     </section>
   </div>
 
-  <script src="bundle.js"></script>
+  <script src="main.js"></script>
 
   <a href="https://github.com/mmiszy/react-with-observable" class="github-corner" aria-label="View source on Github">
     <svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
