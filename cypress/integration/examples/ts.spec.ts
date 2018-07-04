@@ -73,17 +73,11 @@ describe('TypeScript', () => {
 
     // trigger first fetch
     cy.get('#example-contacts button').click({ force: true });
-    cy.get('.current-contacts').contains('Loading…');
-    cy.get('.all-contacts').contains('No contacts.');
-
     cy.wait('@getContacts').then(xhr => {
       assertContacts(xhr);
 
       // trigger second fetch
       cy.get('#example-contacts button').click({ force: true });
-      cy.get('.current-contacts').contains('Loading…');
-      cy.get('.all-contacts ul li').should('have.length', totalContacts);
-
       cy.wait('@getContacts').then(xhr => {
         assertContacts(xhr);
       });
