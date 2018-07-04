@@ -1,6 +1,6 @@
 {
   "name": "react-with-observable",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Use Observables with React declaratively!",
   "main": "build/index.common.js",
   "browser": "build/index.js",
