@@ -95,7 +95,7 @@ import { Subscribe } from 'react-with-observable';</code></pre>
   {source3$.pipe(
     map(val => 10 * val),
     scan((acc, val) => acc + val, 0),
-    map(val => <input value={val} />)
+    map(val => &lt;input value={val} />)
   )}
 &lt;/Subscribe></code></pre>
       <div id="example-3"></div>
