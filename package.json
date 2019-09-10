@@ -19,7 +19,7 @@
     "build": "rimraf build && rollup -c",
     "test": "npm-run-all -p test:jest test:types",
     "test:ci": "npm-run-all -p test:coverage test:types",
-    "test:cypress": "cypress run",
+    "test:cypress": "cypress run --record",
     "test:e2e": "npm-run-all build:examples -p --race serve:examples test:cypress",
     "test:jest": "jest --detectLeaks",
     "test:types": "tslint -c ./tslint.json --project ./tsconfig.json",
