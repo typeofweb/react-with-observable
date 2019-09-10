@@ -20,9 +20,13 @@ jobs:
           npm ci
           npm test
           npm run test:e2e
-          ./node_modules/.bin/danger ci
         env:
           CI: true
+      - name: Danger JS
+        uses: danger/danger-js
+        env:
+          CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: coverage
         if: success()
         run: npm run test:coveralls
