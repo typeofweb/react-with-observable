@@ -23,7 +23,7 @@ jobs:
         env:
           CI: true
       - name: Danger JS
-        uses: danger/danger-js@9
+        uses: danger/danger-js@9.1.8
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
