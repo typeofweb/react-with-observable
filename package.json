@@ -30,7 +30,7 @@
     "deploy:examples": "npm run build:examples && gh-pages --dist examples",
     "prettier": "prettier --config .prettierrc --write '**/*.{ts,js,tsx,jsx}'",
     "release": "np --no-yarn",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "postdeploy": "npm run deploy:examples"
   },
   "keywords": [],

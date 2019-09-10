@@ -12,6 +12,10 @@ export default [
         name: 'react-with-observable',
         file: pkg.browser,
         format: 'umd',
+        globals: {
+          react: 'React',
+          'create-subscription': 'createSubscription',
+        },
       },
       {
         name: 'react-with-observable',
