@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.json",
+  "include": [
+    "../node_modules/cypress",
+    "../node_modules/cypress/types/chai",
+    "*/*.ts"
+  ]
+}

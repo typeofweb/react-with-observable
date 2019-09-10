@@ -18,7 +18,7 @@
   "scripts": {
     "build": "rimraf build && rollup -c",
     "test": "npm-run-all -p test:jest test:types",
-    "test:cypress": "cypress run --record",
+    "test:cypress": "cypress run",
     "test:e2e": "npm-run-all build:examples -p --race serve:examples test:cypress",
     "test:jest": "jest --detectLeaks",
     "test:types": "tslint -c ./tslint.json --project ./tsconfig.json",
@@ -38,6 +38,7 @@
   "license": "ISC",
   "devDependencies": {
     "@cypress/webpack-preprocessor": "4.1.0",
+    "@types/chai": "4.2.2",
     "@types/create-subscription": "16.4.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.5",
