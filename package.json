@@ -76,7 +76,7 @@
     "weak": "1.0.1",
     "webpack": "4.14.0",
     "webpack-cli": "3.0.8",
-    "webpack-dev-server": "3.1.4"
+    "webpack-dev-server": "3.1.11"
   },
   "peerDependencies": {
     "react": ">=16.3.0 <17.0.0",
