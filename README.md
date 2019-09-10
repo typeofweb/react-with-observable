@@ -1,9 +1,10 @@
 # react-with-observable
-[![Build Status](https://travis-ci.org/mmiszy/react-with-observable.svg?branch=master)](https://travis-ci.org/mmiszy/react-with-observable)
-[![Coverage Status](https://coveralls.io/repos/github/mmiszy/react-with-observable/badge.svg?branch=master)](https://coveralls.io/github/mmiszy/react-with-observable?branch=master)
+[![buddy pipeline](https://app.buddy.works/mmiszy/react-with-observable/pipelines/pipeline/209733/badge.svg?token=dfc09b1458ffdb6655820015738f0e3bc1a515874804b85799fe6af214f3473c "buddy pipeline")](https://app.buddy.works/mmiszy/react-with-observable/pipelines/pipeline/209733)
+[![codecov](https://codecov.io/gh/mmiszy/react-with-observable/branch/master/graph/badge.svg)](https://codecov.io/gh/mmiszy/react-with-observable)
 [![cypress dashboard](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)](https://dashboard.cypress.io/#/projects/dmnv1v/runs)
 [![npm](https://img.shields.io/npm/v/react-with-observable.svg)](https://www.npmjs.com/package/react-with-observable)
 [![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/react-with-observable.svg)](https://www.npmjs.com/package/react-with-observable)
+
 
 
 `react-with-observable`: use Observables declaratively in ⚛️  React!
