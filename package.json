@@ -24,7 +24,7 @@
     "test:types": "tslint -c ./tslint.json --project ./tsconfig.json",
 
     "test:cypress": "cypress run --record",
-    "test:cypress:ci": "cypress run --record",
+    "test:cypress:ci": "cypress run --record --parallel",
     "test:coverage": "jest --detectLeaks --coverage",
 
     "build:examples": "webpack --config examples/webpack.config.js --mode production",
