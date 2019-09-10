@@ -18,7 +18,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm ci
-          npm test
+          npm run test:coverage
           npm run test:e2e
         env:
           CI: true
@@ -29,6 +29,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: coverage
         if: success()
-        run: npm run test:coveralls
+        uses: coverallsapp/github-action@v1.0.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
         env:
           CI: true
