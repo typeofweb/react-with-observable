@@ -16,17 +16,20 @@ const modifiedSpecFiles = danger.git.modified_files.filter(function(filePath) {
   return filePath.match(/\.spec\.(js|jsx|ts|tsx)$/gi);
 });
 
-const testFilesIncludeExclusion = modifiedSpecFiles.reduce(function(acc, value) {
-  var content = fs.readFileSync(value).toString();
-  var invalid = content.includes('it.only') || content.includes('describe.only');
-  if (invalid) {
-    acc.push(path.basename(value));
-  }
-  return acc;
-}, []);
+const testFilesIncludeExclusion = modifiedSpecFiles.reduce(
+  function(acc, value) {
+    var content = fs.readFileSync(value).toString();
+    var invalid = content.includes('it.only') || content.includes('describe.only');
+    if (invalid) {
+      acc.push(path.basename(value));
+    }
+    return acc;
+  },
+  [] as string[]
+);
 
 if (testFilesIncludeExclusion.length > 0) {
-  fail('An `only` was left in tests (' + testFilesIncludeExclusion + ')');
+  fail('An `only` was left in tests (' + testFilesIncludeExclusion.join(', ') + ')');
 }
 
 if (hasAppChanges && !hasTestChanges) {

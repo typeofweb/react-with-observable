@@ -14,7 +14,7 @@ describe('test', () => {
       el.unmount();
     });
 
-    it('should render next values', () => {
+    it('should render next values', async () => {
       jest.useFakeTimers();
 
       const source$ = interval(100);
@@ -22,6 +22,7 @@ describe('test', () => {
       const el = mount(<Subscribe>{source$}</Subscribe>);
       for (let i = 0; i < 10; ++i) {
         jest.advanceTimersByTime(100);
+        el.update();
         expect(el.text()).toEqual(String(i));
       }
 
@@ -37,20 +38,29 @@ describe('test', () => {
         <Subscribe>
           {source$.pipe(
             map(val => 10 * val),
-            scan((acc, val) => acc + val, 0)
+            scan((acc: number, val) => acc + val, 0)
           )}
         </Subscribe>
       );
 
       jest.advanceTimersByTime(100);
+      el.update();
       expect(el.text()).toEqual('0');
+
       jest.advanceTimersByTime(100);
+      el.update();
       expect(el.text()).toEqual('10');
+
       jest.advanceTimersByTime(100);
+      el.update();
       expect(el.text()).toEqual('30');
+
       jest.advanceTimersByTime(100);
+      el.update();
       expect(el.text()).toEqual('60');
+
       jest.advanceTimersByTime(100);
+      el.update();
       expect(el.text()).toEqual('100');
 
       el.unmount();
@@ -75,27 +85,27 @@ describe('test', () => {
 
       // @todo why el.find('input') or el.is('input') are not working?
       jest.advanceTimersByTime(100);
-      input = el.getDOMNode() as HTMLInputElement;
+      input = el.getDOMNode();
       expect(input.tagName).toBe('INPUT');
       expect(input.value).toBe('0');
 
       jest.advanceTimersByTime(100);
-      input = el.getDOMNode() as HTMLInputElement;
+      input = el.getDOMNode();
       expect(input.tagName).toBe('INPUT');
       expect(input.value).toBe('10');
 
       jest.advanceTimersByTime(100);
-      input = el.getDOMNode() as HTMLInputElement;
+      input = el.getDOMNode();
       expect(input.tagName).toBe('INPUT');
       expect(input.value).toBe('30');
 
       jest.advanceTimersByTime(100);
-      input = el.getDOMNode() as HTMLInputElement;
+      input = el.getDOMNode();
       expect(input.tagName).toBe('INPUT');
       expect(input.value).toBe('60');
 
       jest.advanceTimersByTime(100);
-      input = el.getDOMNode() as HTMLInputElement;
+      input = el.getDOMNode();
       expect(input.tagName).toBe('INPUT');
       expect(input.value).toBe('100');
 
@@ -129,7 +139,7 @@ describe('test', () => {
     });
 
     it('should return empty render for an observable without a value', () => {
-      const source$ = new Observable();
+      const source$ = new Observable<any>();
 
       const el = mount(<Subscribe>{source$}</Subscribe>);
       expect(el.childAt(0).isEmptyRender()).toBe(true);
