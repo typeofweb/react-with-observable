@@ -17,18 +17,20 @@
   "homepage": "https://github.com/mmiszy/react-with-observable#readme",
   "scripts": {
     "build": "rimraf build && rollup -c",
-    "test": "npm-run-all -p test:jest test:types",
-    "test:ci": "npm-run-all -p test:coverage test:types",
-    "test:cypress": "cypress run",
+    "test": "npm-run-all -p test:coverage test:types",
+    "test:ci": "npm-run-all test",
     "test:e2e": "npm-run-all build:examples -p --race serve:examples test:cypress",
-    "test:jest": "jest --detectLeaks",
+    "test:e2e:ci": "npm-run-all build:examples -p --race serve:examples test:cypress:ci",
     "test:types": "tslint -c ./tslint.json --project ./tsconfig.json",
+
+    "test:cypress": "cypress run --record",
+    "test:cypress:ci": "cypress run --record --parallel --ci-build-id=$BUILD_ID",
     "test:coverage": "jest --detectLeaks --coverage",
+
     "build:examples": "webpack --config examples/webpack.config.js --mode production",
     "serve:examples": "http-server ./examples -a localhost -p 8082 -c-1",
     "start:examples": "webpack-dev-server --config examples/webpack.config.js",
     "deploy:examples": "npm run build:examples && gh-pages --dist examples",
-    "prettier": "prettier --config .prettierrc --write '**/*.{ts,js,tsx,jsx}'",
     "release": "np --no-yarn",
     "prepare": "npm run build",
     "postdeploy": "npm run deploy:examples"
@@ -85,8 +87,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "pre-push": "npm test"
+      "pre-commit": "pretty-quick --staged"
     }
   }
 }
