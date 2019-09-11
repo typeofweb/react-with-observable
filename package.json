@@ -1,6 +1,6 @@
 {
   "name": "react-with-observable",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Use Observables with React declaratively!",
   "main": "build/index.common.js",
   "browser": "build/index.js",
@@ -22,11 +22,9 @@
     "test:e2e": "npm-run-all build:examples -p --race serve:examples test:cypress",
     "test:e2e:ci": "npm-run-all build:examples -p --race serve:examples test:cypress:ci",
     "test:types": "tslint -c ./tslint.json --project ./tsconfig.json",
-
     "test:cypress": "cypress run --record",
     "test:cypress:ci": "cypress run --record --parallel --ci-build-id=$BUILD_ID",
     "test:coverage": "jest --detectLeaks --coverage",
-
     "build:examples": "webpack --config examples/webpack.config.js --mode production",
     "serve:examples": "http-server ./examples -a localhost -p 8082 -c-1",
     "start:examples": "webpack-dev-server --config examples/webpack.config.js",
