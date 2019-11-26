@@ -1,8 +1,5 @@
 {
   "name": "@mmiszy/react-with-observable",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "version": "3.0.1",
   "description": "Use Observables with React declaratively!",
   "main": "build/index.common.js",
