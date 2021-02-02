@@ -46,7 +46,7 @@
     "@types/react-dom": "16.9.4",
     "codecov": "3.6.1",
     "create-subscription": "16.9.0",
-    "cypress": "3.6.1",
+    "cypress": "6.4.0",
     "danger": "9.2.8",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.1",
