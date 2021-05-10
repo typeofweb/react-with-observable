@@ -38,7 +38,7 @@
   "license": "ISC",
   "devDependencies": {
     "@cypress/webpack-preprocessor": "4.1.1",
-    "@types/chai": "4.2.5",
+    "@types/chai": "4.2.18",
     "@types/create-subscription": "16.4.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.5",
