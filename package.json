@@ -47,7 +47,7 @@
     "codecov": "3.6.1",
     "create-subscription": "16.9.0",
     "cypress": "3.6.1",
-    "danger": "9.2.8",
+    "danger": "10.6.6",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.1",
     "gh-pages": "2.1.1",
